@@ -1,17 +1,14 @@
 import Note from './Note'
 import {useState, useEffect} from 'react'
 import {collection, query, orderBy, onSnapshot} from "firebase/firestore"
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import {db} from "../services/firebase"
-import { useNavigate } from "react-router-dom";
+import AddNote from './AddNote';
 
 function NoteManager() {
-  const navigate = useNavigate();
   const [tasks, setTasks] = useState([])
-
-
-  const addNote = () => {
-    navigate("/add-note");
-  }
+  const [modal, setModal] = useState(false);
+  const toggle = () => setModal(!modal);
 
   useEffect(() => {
     const taskColRef = query(collection(db, 'notes'), orderBy('created', 'desc'))
@@ -27,10 +24,15 @@ function NoteManager() {
     <div className='taskManager'>
       <header><center>Note Manager</center></header>
       <div className='taskManager__container'>
-        <button 
-          onClick={addNote}>
-          Add note +
-        </button>
+        <Button onClick={toggle}>
+            Add Note +
+        </Button>
+        <Modal isOpen={modal} toggle={toggle}>
+          <AddNote/>
+          <Button color="red" onClick={toggle}>
+            Close
+          </Button>
+        </Modal>
         <div className='taskManager__tasks'>
 
           {tasks.map((task) => (
@@ -38,6 +40,7 @@ function NoteManager() {
               id={task.id}
               key={task.id}
               title={task.data.title} 
+              category={task.data.category}
               content={task.data.content}
             />
           ))}

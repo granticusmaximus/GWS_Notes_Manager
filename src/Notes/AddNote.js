@@ -1,10 +1,8 @@
 import {useState} from 'react'
 import {db} from "../services/firebase"
 import {collection, addDoc, Timestamp} from 'firebase/firestore'
-import { useNavigate } from "react-router-dom";
 
-function AddNote({onClose, open}) {
-  const navigate = useNavigate();
+function AddNote() {
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
   const [category, setCategory] = useState("")
@@ -19,7 +17,6 @@ function AddNote({onClose, open}) {
         category: category,
         created: Timestamp.now()
       })
-      navigate("/")
     } catch (err) {
       alert(err)
     }
@@ -28,7 +25,6 @@ function AddNote({onClose, open}) {
   return (
     <>
         <div className='taskManager'>
-        <header><center>Note Manager</center></header>
           <br/>
           <br/>
           <div className="container">

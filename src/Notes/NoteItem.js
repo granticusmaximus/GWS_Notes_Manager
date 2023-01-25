@@ -1,15 +1,14 @@
-import Modal from "./Modal"
-
-function NoteItem({onClose, open, title, content, category}) {
-
+function NoteItem({title, content, category}) {
   return (
-    <Modal modalLabel='Note Item' onClose={onClose} open={open}>
+    <div>
       <div className='taskItem'>
-        <h2>{title}</h2>
-        <p>{category}</p>
-        <p>{content}</p>
+        <div className='container'>
+          <h2>{title}</h2>
+          <p>{category}</p>
+          <p>{content}</p>
+        </div>
       </div>
-    </Modal>
+    </div>
   )
 }
 
