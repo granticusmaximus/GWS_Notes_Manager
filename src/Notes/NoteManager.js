@@ -1,7 +1,7 @@
 import Note from './Note'
 import {useState, useEffect} from 'react'
 import {collection, query, orderBy, onSnapshot} from "firebase/firestore"
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button, Modal } from 'reactstrap';
 import {db} from "../services/firebase"
 import AddNote from './AddNote';
 

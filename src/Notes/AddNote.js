@@ -6,7 +6,6 @@ function AddNote() {
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
   const [category, setCategory] = useState("")
-
   /* function to add new task to firestore */
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -61,7 +60,11 @@ function AddNote() {
                   value={content}
                 ></textarea>
             </div>
-            <button type='submit' class="btn btn-primary">
+            <br/>
+            <button 
+              type='submit' 
+              class="btn btn-primary"
+            >
               Done
             </button>
           </form> 
