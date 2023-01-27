@@ -6,6 +6,7 @@ function AddNote() {
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
   const [category, setCategory] = useState("")
+
   /* function to add new task to firestore */
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -22,12 +23,9 @@ function AddNote() {
   }
 
   return (
-    <>
         <div className='taskManager'>
-          <br/>
-          <br/>
-          <div className="container">
-          <form onSubmit={handleSubmit} className='form' name='addTask'>
+          <div>
+          <form onSubmit={handleSubmit} className='addForm' name='addTask'>
             <div class="form-group">
               <label for="fromName">Title</label>
                 <input 
@@ -51,26 +49,21 @@ function AddNote() {
                 />
             </div>
             <div class="form-group">
-              <label for="email_body">Message</label>
+              <label for="content">Enter Content</label>
                 <textarea 
                   onChange={(e) => setContent(e.target.value)}
-                  placeholder='Enter task decription'
+                  placeholder='Enter centent'
                   class="form-control"
                   rows="5"
                   value={content}
                 ></textarea>
             </div>
-            <br/>
-            <button 
-              type='submit' 
-              class="btn btn-primary"
-            >
-              Done
+            <button type='submit' class="btn btn-primary">
+              Save Note
             </button>
           </form> 
           </div>
       </div>
-    </>
 
   )
 }

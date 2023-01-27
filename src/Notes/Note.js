@@ -13,7 +13,7 @@ function Note({id, title, category, content}) {
   const neToggle = () => setEditModal(!editModal);
 
   const handleDelete = async () => {
-    const taskDocRef = doc(db, 'tasks', id)
+    const taskDocRef = doc(db, 'notes', id)
     try{
       await deleteDoc(taskDocRef)
     } catch (err) {
